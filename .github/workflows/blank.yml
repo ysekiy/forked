@@ -32,6 +32,6 @@ jobs:
           : # upstream のブランチをローカルに取得
           git fetch upstream main
           : # マージ
-          : # git merge -m "auto-sync" --no-ff upstream/master
+          git merge -m "auto-sync" --no-ff upstream/master
           : # プッシュ
           : # git push origin main
