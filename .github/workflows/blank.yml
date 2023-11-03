@@ -23,9 +23,9 @@ jobs:
           git config --global user.email ${EMAIL}
 
           : # 自身のリポジトリのmainブランチにチェックアウト
-          : # git checkout main
           : # pull
-          git pull --unshallow
+          git pull --unshallow origin main
+          git checkout main
 
           : # フォーク元のリポジトリをリモート先として "upstream" と命名
           git remote add upstream ${REPO_FORK}
