@@ -34,4 +34,4 @@ jobs:
           : # マージ
           git merge -m "auto-sync" --no-ff upstream/main
           : # プッシュ
-          : # git push origin main
+          git push origin main
