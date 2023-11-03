@@ -23,7 +23,7 @@ jobs:
           git config --global user.email ${EMAIL}
 
           : # 自身のリポジトリのmainブランチにチェックアウト
-          git checkout main
+          : # git checkout main
           : # pull
           git pull --unshallow
 
