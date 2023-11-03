@@ -34,5 +34,13 @@ jobs:
           git checkout -b main origin/main
           : # no-fast-forward でマージ
           git merge -m "auto-sync" --no-ff upstream/main
+          : # 変更点の有無を変数に代入
+          echo "HAS_CHANGES=$(git diff --stat origin/main...main --exit-code --quiet || echo "true")" >> $GITHUB_ENV
           : # プッシュ
           git push origin main
+          
+      - name: 翻訳
+        if: env.HAS_CHANGES == 'true'
+        run: |
+          # ここにマージ後に実行したいコマンド
+          echo "変更されました"
