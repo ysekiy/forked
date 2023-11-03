@@ -32,7 +32,7 @@ jobs:
           : # upstream のブランチをローカルに取得
           git fetch upstream main
           git checkout -b main origin/main
-          : # マージ
+          : # no-fast-forward でマージ
           git merge -m "auto-sync" --no-ff upstream/main
           : # プッシュ
           git push origin main
