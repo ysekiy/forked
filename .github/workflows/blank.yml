@@ -24,14 +24,14 @@ jobs:
 
           : # 自身のリポジトリのmainブランチにチェックアウト
           : # pull
-          git pull --unshallow origin main
-          git checkout main
+          : # git pull --unshallow origin main
+          : # git checkout main
 
           : # フォーク元のリポジトリをリモート先として "upstream" と命名
-          git remote add upstream ${REPO_FORK}
+          : # git remote add upstream ${REPO_FORK}
           : # upstream のブランチをローカルに取得
-          git fetch upstream main
+          : # git fetch upstream main
           : # マージ
-          git merge -m "auto-sync" --no-ff upstream/master
+          : # git merge -m "auto-sync" --no-ff upstream/master
           : # プッシュ
-          git push origin main
+          : # git push origin main
