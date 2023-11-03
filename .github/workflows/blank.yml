@@ -24,7 +24,7 @@ jobs:
 
           : # 自身のリポジトリのmainブランチにチェックアウト
           : # pull
-          : # git pull --unshallow origin main
+          git pull --unshallow origin main
           : # git checkout main
 
           : # フォーク元のリポジトリをリモート先として "upstream" と命名
