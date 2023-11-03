@@ -28,7 +28,7 @@ jobs:
           git checkout main
 
           : # フォーク元のリポジトリをリモート先として "upstream" と命名
-          : # git remote add upstream ${REPO_FORK}
+          git remote add upstream ${REPO_FORK}
           : # upstream のブランチをローカルに取得
           : # git fetch upstream main
           : # マージ
