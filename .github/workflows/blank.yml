@@ -25,7 +25,7 @@ jobs:
           : # 自身のリポジトリのmainブランチにチェックアウト
           : # pull
           git pull --unshallow origin main
-          : # git checkout main
+          git checkout main
 
           : # フォーク元のリポジトリをリモート先として "upstream" と命名
           : # git remote add upstream ${REPO_FORK}
