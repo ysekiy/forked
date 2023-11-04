@@ -42,5 +42,7 @@ jobs:
       - name: 翻訳
         if: env.HAS_CHANGES == 'true'
         run: |
-          # ここにマージ後に実行したいコマンド
+          : # ここにマージ後に実行したいコマンド
           echo "変更されました"
+          : # python を実行
+          python ./translate/translate.py
