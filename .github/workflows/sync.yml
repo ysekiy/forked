@@ -38,11 +38,16 @@ jobs:
           echo "HAS_CHANGES=$(git diff --stat origin/main...main --exit-code --quiet || echo "true")" >> $GITHUB_ENV
           : # プッシュ
           git push origin main
-          
-      - name: 翻訳
+
+      - name: pythonを実行
         if: env.HAS_CHANGES == 'true'
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
         run: |
-          : # ここにマージ後に実行したいコマンド
+          : # 
+          python -m pip install --upgrade pip
+          pip install -r ./translate/requirements.txt
           echo "変更されました"
           : # python を実行
           python ./translate/translate.py
