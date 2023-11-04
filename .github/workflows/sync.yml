@@ -38,12 +38,12 @@ jobs:
           echo "HAS_CHANGES=$(git diff --stat origin/main...main --exit-code --quiet || echo "true")" >> $GITHUB_ENV
           : # プッシュ
           git push origin main
-
-      - name: pythonを実行
-        if: env.HAS_CHANGES == 'true'
+      - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.x'
+      - name: pythonを実行
+        if: env.HAS_CHANGES == 'true'
         run: |
           : # 
           python -m pip install --upgrade pip
