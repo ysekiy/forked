@@ -48,7 +48,7 @@ jobs:
         run: |
           : # 
           git checkout main
-          : # 1 つ前の commit との差分があるファイルのうち、(Add, Create, Modify) があった (ipynb, md)ファイル。 ただし翻訳済み(ファイル名に`.ja.`などがつく)は除く
+          : # 1 つ前の commit との差分があるファイルのうち、(Add, Copy, Modify) があった (ipynb, md)ファイル。 ただし翻訳済み(ファイル名に`.ja.`などがつく)は除く
           changed_files=$(git diff --name-status HEAD^ HEAD | grep -E '^[ACM].*\.(ipynb|md)$' | grep -Ev '\.[A-Za-z]{2}(-[A-Za-z]{2})\.(ipynb|md)$' | awk '{print $2}')
           
           : # 翻訳
