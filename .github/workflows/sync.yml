@@ -39,6 +39,7 @@ jobs:
           : # プッシュ
           git push origin main
       - name: Set up Python
+        if: env.HAS_CHANGES == 'true'
         uses: actions/setup-python@v4
         with:
           python-version: '3.x'
@@ -46,8 +47,9 @@ jobs:
         if: env.HAS_CHANGES == 'true'
         run: |
           : # 
+          git checkout -b workflow origin/workflow
           python -m pip install --upgrade pip
-          pip install -r ./translate/requirements.txt
+          pip install -r ./.github/workflows/translate/requirements.txt
           echo "変更されました"
           : # python を実行
-          python ./translate/translate.py
+          python ./.github/workflows/./translate/translate.py
