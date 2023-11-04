@@ -47,7 +47,7 @@ jobs:
         if: env.HAS_CHANGES == 'true'
         run: |
           : # 
-          git checkout -b workflow origin/workflow
+          git checkout workflow
           python -m pip install --upgrade pip
           pip install -r ./.github/workflows/translate/requirements.txt
           echo "変更されました"
