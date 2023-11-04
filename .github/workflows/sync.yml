@@ -47,9 +47,24 @@ jobs:
         if: env.HAS_CHANGES == 'true'
         run: |
           : # 
+          git checkout main
+          : # 1 つ前の commit との差分があるファイルのうち、(Add, Create, Modify) があった (ipynb, md)ファイル。 ただし翻訳済み(ファイル名に`.ja.`などがつく)は除く
+          changed_files=$(git diff --name-status HEAD^ HEAD | grep -E '^[ACM].*\.(ipynb|md)$' | grep -Ev '\.[A-Za-z]{2}(-[A-Za-z]{2})\.(ipynb|md)$' | awk '{print $2}')
+          
+          : # 翻訳
+          : # ライブラリをインストール
           git checkout workflow
           python -m pip install --upgrade pip
           pip install -r ./.github/workflows/translate/requirements.txt
-          echo "変更されました"
-          : # python を実行
-          python ./.github/workflows/./translate/translate.py
+
+          : # 最新のコミット id をブランチ名にする
+          git checkout main
+          latest_commit_id=$(git rev-parse main)
+          git checkout -b $latest_commit_id
+
+          : # 変更または追加されたファイルの処理
+          for file in $changed_files; do
+            ./translate.py --file-path $file --locale ja
+          done
+
+          python ./.github/workflows/translate/translate.py
