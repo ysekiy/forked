@@ -63,8 +63,7 @@ jobs:
           git checkout -b $latest_commit_id
 
           : # 変更または追加されたファイルの処理
+          git checkout workflow -- ./.github/workflows/translate/translate.py
           for file in $changed_files; do
-            ./translate.py --file-path $file --locale ja
+            python ./.github/workflows/translate/translate.py --file-path $file --locale ja
           done
-
-          python ./.github/workflows/translate/translate.py
